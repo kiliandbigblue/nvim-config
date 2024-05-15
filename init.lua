@@ -1,2 +1,2 @@
 require("theprimeagen")
-print("hello")
+
