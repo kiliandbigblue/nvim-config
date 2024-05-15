@@ -79,6 +79,11 @@ _G.packer_plugins = {
     path = "/Users/kiliandemeulemeester/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
+  ["blamer.nvim"] = {
+    loaded = true,
+    path = "/Users/kiliandemeulemeester/.local/share/nvim/site/pack/packer/start/blamer.nvim",
+    url = "https://github.com/APZelos/blamer.nvim"
+  },
   ["cmp-nvim-lsp"] = {
     loaded = true,
     path = "/Users/kiliandemeulemeester/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
