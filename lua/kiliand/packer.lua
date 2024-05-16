@@ -27,6 +27,7 @@ return require('packer').startup(function(use)
     use('theprimeagen/harpoon')
     use('mbbill/undotree')
     use('tpope/vim-fugitive')
+    use('christoomey/vim-tmux-navigator')
 
     use {
         'VonHeikemen/lsp-zero.nvim',
@@ -44,4 +45,6 @@ return require('packer').startup(function(use)
     }
 
     use 'APZelos/blamer.nvim'
+
+    use('numToStr/Comment.nvim')
 end)
