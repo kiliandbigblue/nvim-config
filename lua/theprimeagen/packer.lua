@@ -14,14 +14,15 @@ return require('packer').startup(function(use)
     }
 
     use({
-        "rose-pine/neovim",
-        as = "rose-pine",
+        "folke/tokyonight.nvim",
+        as = "tokyonight",
         config = function()
-            vim.cmd('colorscheme rose-pine')
+            vim.cmd('colorscheme tokyonight-night')
         end
     })
 
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
+    use('nvim-treesitter/nvim-treesitter-context', { run = ':TSContextEnable' })
     use('nvim-lua/plenary.nvim')
     use('theprimeagen/harpoon')
     use('mbbill/undotree')
