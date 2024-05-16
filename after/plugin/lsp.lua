@@ -51,6 +51,8 @@ require('mason-lspconfig').setup({
         'tsserver',
         'eslint',
         'lua_ls',
+        'clangd',
+        'golangci_lint_ls',
     },
     handlers = {
         function(server_name)
@@ -87,6 +89,42 @@ require('mason-lspconfig').setup({
                     })
                 end,
 
+            }
+        end,
+
+        ["golangci_lint_ls"] = function()
+            local lspconfig = require("lspconfig")
+            lspconfig.golangci_lint_ls.setup {
+                on_attach = function(client, bufnr)
+                    -- Format the buffer before saving
+                    vim.api.nvim_create_autocmd("BufWritePre", {
+                        buffer = bufnr,
+                        callback = function()
+                            vim.lsp.buf.format({ async = false })
+                        end,
+                    })
+                end,
+            }
+        end,
+
+        ["clangd"] = function()
+            local lspconfig = require("lspconfig")
+            lspconfig.clangd.setup {
+                filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'proto' }, -- Add 'proto' to the filetypes
+                on_attach = function(client, bufnr)
+                    -- Format the buffer before saving
+                    vim.api.nvim_create_autocmd("BufWritePre", {
+                        buffer = bufnr,
+                        callback = function()
+                            vim.lsp.buf.format({ async = false })
+                        end,
+                    })
+                end,
+                settings = {
+                    clangd = {
+                        -- Add any clangd-specific settings here
+                    }
+                }
             }
         end,
     },
