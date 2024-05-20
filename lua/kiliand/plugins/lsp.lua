@@ -49,6 +49,7 @@ return {
                 'lua_ls',
                 'clangd',
                 'golangci_lint_ls',
+                'gopls',  -- Ensure gopls is installed
             },
             handlers = {
                 function(server_name)
@@ -121,6 +122,16 @@ return {
                         }
                     }
                 end,
+
+                ["gopls"] = function()
+                    local lspconfig = require("lspconfig")
+                    lspconfig.gopls.setup {
+                        capabilities = capabilities,
+                        on_attach = function(client, bufnr)
+                            -- Optional: Configure additional settings specific to gopls
+                        end,
+                    }
+                end,
             },
         })
 
@@ -159,3 +170,5 @@ return {
         })
     end
 }
+
+
