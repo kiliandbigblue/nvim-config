@@ -22,6 +22,8 @@ return {
             vim.lsp.protocol.make_client_capabilities(),
             cmp_lsp.default_capabilities())
 
+        capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = false
+
         vim.api.nvim_create_autocmd("LspAttach", {
             group = vim.api.nvim_create_augroup("UserLspConfig", {}),
             callback = function(ev)
@@ -49,7 +51,7 @@ return {
                 'lua_ls',
                 'clangd',
                 'golangci_lint_ls',
-                'gopls',  -- Ensure gopls is installed
+                'gopls', -- Ensure gopls is installed
             },
             handlers = {
                 function(server_name)
@@ -170,5 +172,3 @@ return {
         })
     end
 }
-
-
