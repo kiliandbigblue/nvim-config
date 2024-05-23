@@ -51,7 +51,7 @@ return {
                 'lua_ls',
                 'clangd',
                 'golangci_lint_ls',
-                'gopls', -- Ensure gopls is installed
+                'gopls',
             },
             handlers = {
                 function(server_name)
@@ -107,7 +107,7 @@ return {
                 ["clangd"] = function()
                     local lspconfig = require("lspconfig")
                     lspconfig.clangd.setup {
-                        filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'proto' }, -- Add 'proto' to the filetypes
+                        filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'proto' },
                         on_attach = function(client, bufnr)
                             -- Format the buffer before saving
                             vim.api.nvim_create_autocmd("BufWritePre", {

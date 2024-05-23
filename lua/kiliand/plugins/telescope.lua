@@ -1,6 +1,6 @@
 return {
   "nvim-telescope/telescope.nvim",
-  branch = "0.1.x",
+  commit = "a4432dfb9b0b960c4cbc8765a42dc4fe2e029e8f",
   dependencies = {
     "nvim-lua/plenary.nvim",
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
@@ -12,7 +12,7 @@ return {
 
     telescope.setup({
       defaults = {
-        path_display = { "smart" },
+        path_display = { "filename_first" },
         mappings = {
           i = {
             ["<C-k>"] = actions.move_selection_previous, -- move to prev result
