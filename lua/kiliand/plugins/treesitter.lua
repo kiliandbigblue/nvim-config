@@ -4,6 +4,7 @@ return {
     build = ":TSUpdate",
     dependencies = {
         "windwp/nvim-ts-autotag",
+        "nvim-treesitter/nvim-treesitter-context",
     },
     config = function()
         -- import nvim-treesitter plugin
@@ -45,16 +46,15 @@ return {
                 "vimdoc",
                 "yaml",
             },
-            incremental_selection = {
-                enable = true,
-                keymaps = {
-                    init_selection = "<C-space>",
-                    node_incremental = "<C-space>",
-                    scope_incremental = false,
-                    node_decremental = "<bs>",
-                },
-            },
-        })
+ --            incremental_selection = {
+ --                enable = true,
+ --                keymaps = {
+ --                    init_selection = "<C-space>",
+ --                    node_incremental = "<C-space>",
+ --                    scope_incremental = false,
+ --                    node_decremental = "<bs>",
+ --                },
+ --            },
+         })
     end,
 }
-
