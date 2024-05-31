@@ -1,5 +1,8 @@
 require("kiliand.snippets")
 
+-- Load friendly-snippets
+require("luasnip.loaders.from_vscode").lazy_load()
+
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
 vim.opt.shortmess:append("c")
 
@@ -11,6 +14,7 @@ local cmp = require("cmp")
 cmp.setup({
 	sources = {
 		{ name = "nvim_lsp" },
+		{ name = "luasnip" },
 		{ name = "cody" },
 		{ name = "path" },
 		{ name = "buffer" },
@@ -30,7 +34,7 @@ cmp.setup({
 	-- Enable luasnip to handle snippet expansion for nvim-cmp
 	snippet = {
 		expand = function(args)
-			vim.snippet.expand(args.body)
+			require("luasnip").snippet.expand(args.body)
 		end,
 	},
 })
