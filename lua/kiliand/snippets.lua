@@ -1,12 +1,15 @@
 local ls = require("luasnip")
 
--- TODO: Think about `locally_jumpable`, etc.
--- Might be nice to send PR to luasnip to use filters instead for these functions ;)
+-- Load friendly-snippets
+require("luasnip.loaders.from_vscode").lazy_load()
 
-vim.snippet.expand = ls.lsp_expand
+-- Alias vim.snippet to avoid conflict
+local snippet = {}
+
+snippet.expand = ls.lsp_expand
 
 ---@diagnostic disable-next-line: duplicate-set-field
-vim.snippet.active = function(filter)
+snippet.active = function(filter)
 	filter = filter or {}
 	filter.direction = filter.direction or 1
 
@@ -18,7 +21,7 @@ vim.snippet.active = function(filter)
 end
 
 ---@diagnostic disable-next-line: duplicate-set-field
-vim.snippet.jump = function(direction)
+snippet.jump = function(direction)
 	if direction == 1 then
 		if ls.expandable() then
 			return ls.expand_or_jump()
@@ -30,7 +33,7 @@ vim.snippet.jump = function(direction)
 	end
 end
 
-vim.snippet.stop = ls.unlink_current
+snippet.stop = ls.unlink_current
 
 -- ================================================
 --      My Configuration
@@ -41,14 +44,17 @@ ls.config.set_config({
 	override_builtin = true,
 })
 
-for _, ft_path in ipairs(vim.api.nvim_get_runtime_file("lua/kilian/snippets/*.lua", true)) do
+for _, ft_path in ipairs(vim.api.nvim_get_runtime_file("lua/kiliand/snippets/*.lua", true)) do
 	loadfile(ft_path)()
 end
 
 vim.keymap.set({ "i", "s" }, "<c-k>", function()
-	return vim.snippet.active({ direction = 1 }) and vim.snippet.jump(1)
+	return snippet.active({ direction = 1 }) and snippet.jump(1)
 end, { silent = true })
 
 vim.keymap.set({ "i", "s" }, "<c-j>", function()
-	return vim.snippet.active({ direction = -1 }) and vim.snippet.jump(-1)
+	return snippet.active({ direction = -1 }) and snippet.jump(-1)
 end, { silent = true })
+
+-- Export the snippet table
+vim.snippet = snippet
