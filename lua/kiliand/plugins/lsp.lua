@@ -92,26 +92,7 @@ return {
 					init_options = { clangdFileStatus = true },
 					filetypes = { "c" },
 				},
-
-				prettierd = {
-					cmd = { "prettierd", "--stdin" },
-					filetypes = {
-						"javascript",
-						"javascriptreact",
-						"typescript",
-						"typescriptreact",
-						"vue",
-						"css",
-						"scss",
-						"less",
-						"html",
-						"json",
-						"yaml",
-						"markdown",
-					},
-					root_dir = lspconfig.util.root_pattern(".prettierrc", ".prettierrc.js", "package.json", ".git"),
-					settings = {},
-				},
+				eslint = true,
 			}
 
 			local servers_to_install = vim.tbl_filter(function(key)
@@ -195,16 +176,33 @@ return {
 				formatters_by_ft = {
 					lua = { "stylua" },
 					javascript = { { "prettierd", "prettier" } },
+					javascriptreact = { { "prettierd", "prettier" } },
+					typescript = { { "prettierd", "prettier" } },
+					typescriptreact = { { "prettierd", "prettier" } },
+					markdown = { { "prettierd", "prettier" } },
 				},
 			})
-
 			vim.api.nvim_create_autocmd("BufWritePre", {
 				callback = function(args)
+					local bufnr = args.buf
+					local ft = vim.bo[bufnr].filetype
+
+					-- Run Conform formatting
 					require("conform").format({
-						bufnr = args.buf,
+						bufnr = bufnr,
 						lsp_fallback = true,
 						quiet = true,
 					})
+
+					-- Run EslintFixAll for relevant file types
+					if
+						ft == "javascript"
+						or ft == "javascriptreact"
+						or ft == "typescript"
+						or ft == "typescriptreact"
+					then
+						vim.cmd("EslintFixAll")
+					end
 				end,
 			})
 		end,
