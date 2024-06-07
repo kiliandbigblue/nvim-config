@@ -65,15 +65,6 @@ return {
 				},
 				biome = true,
 
-				jsonls = {
-					settings = {
-						json = {
-							schemas = require("schemastore").json.schemas(),
-							validate = { enable = true },
-						},
-					},
-				},
-
 				yamlls = {
 					settings = {
 						yaml = {
@@ -181,6 +172,7 @@ return {
 					typescript = { { "prettierd", "prettier" } },
 					typescriptreact = { { "prettierd", "prettier" } },
 					markdown = { { "prettierd", "prettier" } },
+					go = { "gofmt", "gofumpt", "goimports" },
 				},
 			})
 			vim.api.nvim_create_autocmd("BufWritePre", {
@@ -196,6 +188,7 @@ return {
 					})
 
 					-- Run EslintFixAll for relevant file types
+					-- if there is a .eslintrc file in the project
 					if
 						ft == "javascript"
 						or ft == "javascriptreact"
