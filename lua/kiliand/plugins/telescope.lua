@@ -12,7 +12,7 @@ return {
 
 		telescope.setup({
 			defaults = {
-				file_ignore_patterns = { "node_modules", ".git", "proto/gen", "mocks" },
+				file_ignore_patterns = { "node_modules", "/.git", "proto/gen", "mocks" },
 				path_display = { "filename_first" },
 				mappings = {
 					i = {
