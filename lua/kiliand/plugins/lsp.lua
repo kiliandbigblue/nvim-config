@@ -81,7 +81,7 @@ return {
 					-- TODO: Could include cmd, but not sure those were all relevant flags.
 					--    looks like something i would have added while i was floundering
 					init_options = { clangdFileStatus = true },
-					filetypes = { "c", "proto", "cpp" },
+					filetypes = { "c", "cpp" },
 				},
 
 				eslint = true,
@@ -100,7 +100,7 @@ return {
 			local ensure_installed = {
 				"stylua",
 				"lua_ls",
-				-- "tailwind-language-server",
+				"buf",
 			}
 
 			vim.list_extend(ensure_installed, servers_to_install)
@@ -173,6 +173,7 @@ return {
 					typescriptreact = { { "prettierd", "prettier" } },
 					markdown = { { "prettierd", "prettier" } },
 					go = { "gofmt", "gofumpt", "goimports" },
+					proto = { "buf" },
 				},
 			})
 			vim.api.nvim_create_autocmd("BufWritePre", {

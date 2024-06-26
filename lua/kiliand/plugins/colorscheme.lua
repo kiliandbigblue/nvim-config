@@ -1,12 +1,13 @@
 function ColorMyPencils(color)
-	vim.cmd.colorscheme("catppuccin")
+	vim.cmd.colorscheme("rose-pine")
 
 	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-
-	-- Set the line number color.
-	local mocha = require("catppuccin.palettes").get_palette("mocha")
-	vim.api.nvim_set_hl(0, "LineNr", { fg = mocha.sky })
+	vim.api.nvim_set_hl(0, "Visual", { bg = "#275378" })
+	vim.api.nvim_set_hl(0, "VisualFloat", { bg = "#275378" })
+	--
+	-- Set the line number color to gold from rose-pine theme
+	vim.api.nvim_set_hl(0, "LineNr", { fg = "#D4A6A6" }) -- gold color from rose-pine theme
 end
 
 return {
@@ -117,8 +118,8 @@ return {
 		name = "rose-pine",
 		config = function()
 			require("rose-pine").setup({
-				disable_background = true,
 				styles = {
+					transparency = true,
 					italic = true,
 				},
 			})
