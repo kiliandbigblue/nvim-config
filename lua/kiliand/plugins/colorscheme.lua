@@ -1,13 +1,13 @@
 function ColorMyPencils(color)
-	vim.cmd.colorscheme("rose-pine")
+	vim.cmd.colorscheme("catppuccin")
 
-	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-	vim.api.nvim_set_hl(0, "Visual", { bg = "#275378" })
-	vim.api.nvim_set_hl(0, "VisualFloat", { bg = "#275378" })
-	--
-	-- Set the line number color to gold from rose-pine theme
-	vim.api.nvim_set_hl(0, "LineNr", { fg = "#D4A6A6" }) -- gold color from rose-pine theme
+	-- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+	-- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+	-- vim.api.nvim_set_hl(0, "Visual", { bg = "#275378" })
+	-- vim.api.nvim_set_hl(0, "VisualFloat", { bg = "#275378" })
+	-- --
+	-- -- Set the line number color to gold from rose-pine theme
+	-- vim.api.nvim_set_hl(0, "LineNr", { fg = "#D4A6A6" }) -- gold color from rose-pine theme
 end
 
 return {
@@ -15,7 +15,7 @@ return {
 		"folke/tokyonight.nvim",
 		priority = 1000,
 		config = function()
-			local transparent = false -- set to true if you would like to enable transparency
+			local transparent = true -- set to true if you would like to enable transparency
 
 			local bg = "#011628"
 			local bg_dark = "#011423"
@@ -28,7 +28,7 @@ return {
 			local border = "#547998"
 
 			require("tokyonight").setup({
-				style = "night",
+				style = "storm",
 				transparent = transparent,
 				styles = {
 					sidebars = transparent and "transparent" or "dark",
@@ -61,7 +61,7 @@ return {
 		priority = 1000,
 		config = function()
 			require("catppuccin").setup({
-				flavour = "auto", -- latte, frappe, macchiato, mocha
+				flavour = "mocha", -- latte, frappe, macchiato, mocha
 				background = { -- :h background
 					light = "latte",
 					dark = "mocha",
@@ -123,6 +123,15 @@ return {
 					italic = true,
 				},
 			})
+		end,
+	},
+
+	{
+		"lunarvim/synthwave84.nvim",
+		name = "synthwave84",
+		priority = 1000,
+		config = function()
+			require("synthwave84").setup({})
 
 			ColorMyPencils()
 		end,
