@@ -8,7 +8,8 @@ return {
 		-- configure lualine with modified theme
 		lualine.setup({
 			options = {
-				theme = "auto",
+				--[[ theme = "auto", ]]
+				theme = "dracula-nvim",
 			},
 			sections = {
 				lualine_c = {

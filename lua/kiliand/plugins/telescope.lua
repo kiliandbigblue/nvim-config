@@ -13,7 +13,7 @@ return {
 
 		telescope.setup({
 			defaults = {
-				file_ignore_patterns = { "node_modules", "/.git", "proto/gen", "mocks" },
+				file_ignore_patterns = { "node_modules", "/.git", "proto/gen", "mocks", "c7bc9c66", "mini.*%.js" },
 				path_display = { "filename_first" },
 				mappings = {
 					i = {
@@ -21,6 +21,26 @@ return {
 						["<C-j>"] = actions.move_selection_next, -- move to next result
 						["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
 					},
+				},
+			},
+			pickers = {
+				find_files = {
+					theme = "ivy",
+				},
+				lsp_references = {
+					theme = "ivy",
+				},
+				lsp_document_symbols = {
+					theme = "ivy",
+				},
+				lsp_incoming_calls = {
+					theme = "ivy",
+				},
+				live_grep = {
+					theme = "ivy",
+				},
+				grep_string = {
+					theme = "ivy",
 				},
 			},
 		})

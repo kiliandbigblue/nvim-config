@@ -1,5 +1,6 @@
 function ColorMyPencils(color)
-	vim.cmd.colorscheme("catppuccin")
+	vim.cmd.colorscheme("dracula")
+	vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = "none" })
 
 	-- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 	-- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
@@ -28,7 +29,7 @@ return {
 			local border = "#547998"
 
 			require("tokyonight").setup({
-				style = "storm",
+				style = "moon",
 				transparent = transparent,
 				styles = {
 					sidebars = transparent and "transparent" or "dark",
@@ -61,7 +62,7 @@ return {
 		priority = 1000,
 		config = function()
 			require("catppuccin").setup({
-				flavour = "mocha", -- latte, frappe, macchiato, mocha
+				flavour = "auto", -- latte, frappe, macchiato, mocha
 				background = { -- :h background
 					light = "latte",
 					dark = "mocha",
@@ -108,8 +109,6 @@ return {
 					-- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
 				},
 			})
-
-			ColorMyPencils()
 		end,
 	},
 
@@ -132,6 +131,20 @@ return {
 		priority = 1000,
 		config = function()
 			require("synthwave84").setup({})
+		end,
+	},
+
+	-- add dracula
+	{
+		"Mofiqul/dracula.nvim",
+		name = "dracula",
+		priority = 1000,
+		config = function()
+			require("dracula").setup({
+				transparent_bg = true,
+				lualine_bg_color = "#44475a",
+				italic_comment = true,
+			})
 
 			ColorMyPencils()
 		end,

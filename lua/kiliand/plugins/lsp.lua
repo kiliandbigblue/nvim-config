@@ -167,11 +167,11 @@ return {
 			require("conform").setup({
 				formatters_by_ft = {
 					lua = { "stylua" },
-					javascript = { { "prettierd", "prettier" } },
-					javascriptreact = { { "prettierd", "prettier" } },
-					typescript = { { "prettierd", "prettier" } },
-					typescriptreact = { { "prettierd", "prettier" } },
-					markdown = { { "prettierd", "prettier" } },
+					javascript = { "prettierd", "prettier" },
+					javascriptreact = { "prettierd", "prettier" },
+					typescript = { "prettierd", "prettier" },
+					typescriptreact = { "prettierd", "prettier", stop_after_first = true },
+					markdown = { "prettierd", "prettier" },
 					go = { "gofmt", "gofumpt", "goimports" },
 					proto = { "clang-format" },
 				},
