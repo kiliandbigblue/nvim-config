@@ -15,6 +15,7 @@ return {
 			-- Schema information
 			"b0o/SchemaStore.nvim",
 		},
+		commit = "a05f8d1e2c5d7a0e71e44b3a28e2b6bd311bd01b",
 		config = function()
 			require("neodev").setup({
 				-- library = {
