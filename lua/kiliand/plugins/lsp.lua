@@ -15,7 +15,6 @@ return {
 			-- Schema information
 			"b0o/SchemaStore.nvim",
 		},
-		commit = "a05f8d1e2c5d7a0e71e44b3a28e2b6bd311bd01b",
 		config = function()
 			require("neodev").setup({
 				-- library = {
@@ -59,7 +58,7 @@ return {
 				cssls = true,
 
 				-- Probably want to disable formatting for this lang server
-				tsserver = {
+				ts_ls = {
 					server_capabilities = {
 						documentFormattingProvider = false,
 					},
@@ -100,6 +99,7 @@ return {
 			require("mason").setup()
 			local ensure_installed = {
 				"stylua",
+				"ts_ls",
 				"lua_ls",
 				"buf",
 			}
